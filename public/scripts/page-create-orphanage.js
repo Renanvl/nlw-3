@@ -75,4 +75,9 @@ function toggleSelect(event){
 
     input.value = button.dataset.value
 
+
+    function validate(event){
+        event.preventDefault()
+        alert('Selecione um ponto no mapa!')
+    }
 }

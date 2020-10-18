@@ -4,8 +4,11 @@ const pages = require('./pages.js')
 
 const server = express();
 
-// create route for static files
+
 server
+    // access request body
+    .use(express.urlencoded({extended : true}))
+    // create route for static files
     .use(express.static('public'))
 
 //configure template engine 
@@ -16,7 +19,8 @@ server
     .get('/', pages.index)
     .get('/orphanages', pages.orphanages)
     .get('/orphanage', pages.orphanage)
-    .get('/create-orphanage', pages.createOrphanage);
+    .get('/create-orphanage', pages.createOrphanage)
+    .post('/save-orphanage', pages.saveOrphanage)
 
 //initiate server
 server.listen(5500);
